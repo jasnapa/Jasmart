@@ -8,6 +8,7 @@ const connectDB = require("./config/dbConnect")
 const path= require('path')
 require('dotenv').config()
 
+app.use(express.static(path.resolve(__dirname, 'Public')))
 const cloudinary = require('cloudinary')
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
@@ -26,7 +27,6 @@ app.use(function(req, res, next){
 hbs.registerHelper("inc", function (value, options) {
     return parseInt(value) + 1;
   });
-app.use(express.static(path.resolve(__dirname, 'Public')))
 
 app.use(session({ 
     secret:'key',

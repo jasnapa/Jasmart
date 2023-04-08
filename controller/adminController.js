@@ -8,7 +8,7 @@ const multer = require('multer')
 const bannerModel = require('../model/bannerModel')
 const couponModel = require('../model/couponModel')
 const cloudinary = require('cloudinary')
-
+const path= require('path')
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
@@ -225,15 +225,13 @@ var adminController = {
             const { name, category, subcategory, mrp, price, stock, description } = req.body
             if (name.trim() !== "" && mrp.trim() !== "" && price.trim() !== "" && stock.trim() !== "" && description.trim() !== "") {
                
-                const image = req.files.image
+                const image = req.files.image[0]
                 const SubImage = req.files.SubImage
-                console.log(image);
-                let imageFile = await cloudinary.uploader.upload(image.path, { folder: 'JasMart' })
+                let imageFile = await cloudinary.uploader.upload(image.path ,{folder:'JasMart' })
                 let productImg = imageFile
-                console.log("shjhsaj",imageFile);
 
                 for (let i in SubImage) {
-                    let imageFile = await cloudinary.uploader.upload(SubImage[i].path, { folder: 'JasMart' })
+                    let imageFile = await cloudinary.uploader.upload(SubImage[i].path ,{folder:'JasMart' })
                     SubImage[i] = imageFile
                 }
                 let product = new productModel({ name, category, subcategory, mrp, price, stock, description, image:productImg, SubImage:SubImage })
@@ -291,17 +289,29 @@ var adminController = {
     },
     postAdminEditProduct: async (req, res) => {
         try {
+            const image = req.files.image[0]
+            const SubImage = req.files.SubImage
+            console.log(image);
+            let imageFile = await cloudinary.uploader.upload(image.path ,{folder:'JasMart' })
+            let productImg = imageFile
+            console.log("shjhsaj",imageFile);
+
+            for (let i in SubImage) {
+                let imageFile = await cloudinary.uploader.upload(SubImage[i].path ,{folder:'JasMart' })
+                SubImage[i] = imageFile
+            }
             const { name, category, subcategory, mrp, stock, price, description, _id } = req.body
             if (name.trim() !== "" && mrp.trim() !== "" && price.trim() !== "" && stock.trim() !== "" && description.trim !== "") {
                 const product = await productModel.findByIdAndUpdate(_id,
-                    { $set: { name, category, subcategory, mrp, price, stock, description, image: req.files.image } }
+                    { $set: { name, category, subcategory, mrp, price, stock, description, image: productImg } }
                 )
+
                 let length = 5 - product.SubImage.length
                 if (req.files.SubImage != null) {
                     console.log(length, product.SubImage.length);
                     for (let i = 0; i < length; i++) {
                         if (req.files.SubImage[i] != null) {
-                            product.SubImage.push(req.files.SubImage[i])
+                            product.SubImage.push(...SubImage)
                         } else {
                             break;
                         }
@@ -323,7 +333,7 @@ var adminController = {
     getDeleteImage: async (req, res) => {
 
         let file = req.query.name
-        await productModel.updateOne({ _id: req.params.id }, { $pull: { SubImage: { filename: file } } })
+        await productModel.updateOne({ _id: req.params.id }, { $pull: { SubImage: { original_filename: file } } })
         res.redirect('back')
     },
     getAdminList: async (req, res) => {

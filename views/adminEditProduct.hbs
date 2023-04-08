@@ -316,7 +316,7 @@
                                             value="{{stock}}" class="form-control form-control-lg" required />
                                     </div>
                                     <div>
-                                        <img src="/admin/images/{{this.image.[0].filename}}" width="100px"
+                                        <img src="{{this.image.url}}" width="100px"
                                             height="150px" alt="">
                                     </div>
                                     <div class="form-outline form-white mb-5">
@@ -325,9 +325,9 @@
                                             value="{{image}}" class="form-control form-control-lg" />
                                     </div>
                                     {{#each SubImage}}
-                                    <img class="me-2" src="/admin/images/{{this.filename}}" width="100px" height="100px"
+                                    <img class="me-2" src="{{this.url}}" width="100px" height="100px"
                                         alt=""><a
-                                        href="/admin/deleteImage/{{../product._id}}/?name={{this.filename}}">Delete</a>
+                                        href="/admin/deleteImage/{{../product._id}}/?name={{this.original_filename}}">Delete</a>
                                     {{/each}}
                                     <div class="form-outline form-white mb-5">
                                         <label for="typeEmailX" class="text-dark">Sub Image</label>

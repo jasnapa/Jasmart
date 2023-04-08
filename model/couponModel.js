@@ -1,0 +1,38 @@
+const mongoose = require('mongoose')
+
+const couponSchema = new mongoose.Schema({
+
+    name:{
+        type:String,
+        required:true 
+    },
+    code:{
+        type:String,
+        required:true
+    },
+    minamount:{
+        type:Number,
+        required:true
+    },
+    maxamount:{
+        type:Number,
+        required:true
+    },
+    cashback:{
+        type:Number,
+        required:true
+    },
+    expiry:{
+        type:String,
+        required:true
+    },
+    status:{
+        type:String,
+        default:'available'
+    },
+
+})
+
+const couponModel = mongoose.model('coupon',couponSchema)
+
+module.exports= couponModel

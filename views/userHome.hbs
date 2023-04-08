@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>JasMart</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Footwear Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+	<script
+		type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!-- Custom Theme files -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+	<link href="/user/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+	<link href="/user/css/style.css" type="text/css" rel="stylesheet" media="all">
+	<link href="/user/css/font-awesome.css" rel="stylesheet"> <!-- font-awesome icons -->
+	<link rel="stylesheet" href="css/owl.carousel.css" type="text/css" media="all" /> <!-- Owl-Carousel-CSS -->
+	<link href='/user/css/simplelightbox.css' rel='stylesheet' type='text/css'>
+
+	<!-- //Custom Theme files -->
+	<!-- js -->
+	<script src="/user/js/jquery-2.2.3.min.js"></script>
+	<!-- //js -->
+	<!-- web-fonts -->
+	<link href="//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+
+
+
+	<!-- //web-fonts -->
+</head>
+
+<body>
+	<!-- banner -->
+
+	<div class="agileits-banner jarallax">
+		<!-- navigation -->
+		<div class="top-nav">
+			<div class="container">
+				<nav class="navbar navbar-expand-lg navbar-default">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse"
+							data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+
+					<!-- navbar-header -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-left">
+							<li><a href="/" class="hvr-underline-from-center active">Home</a></li>
+							<li><a href="/products?category=men" class="hvr-underline-from-center scroll">Men</a></li>
+							<li><a href="/products?category=women" class="hvr-underline-from-center scroll">Women</a>
+							</li>
+							<li><a href="/products?category=kids" class="hvr-underline-from-center scroll">Kids</a></li>
+							<li class="d-flex">
+								{{#if Log}}
+								<a href="userProfile" class="btn btn-sm btn-outline-warning">
+									{{Log}}
+								</a>
+								{{else}}
+								{{!-- <a href="/login" class="hvr-underline-from-center scroll ">Login</a>
+							</li> --}}
+							<a href="/login" class="btn btn-sm btn-outline-warning" type="submit">
+								<i class="bi bi-door-open"></i></i>
+								Login
+							</a>
+							{{/if}}
+
+						</ul>
+					</div>
+					{{!-- <div class="d-flex justify-content-end me-5 fs-2 "><a href="/getCart"><i
+								class="bi bi-cart3"></i></a></div> --}}
+
+					<div class="clearfix"> </div>
+				</nav>
+			</div>
+		</div>
+
+		<!-- //navigation -->
+		<!-- banner-text -->
+		<div class="banner-text">
+			<div class="container">
+				<div class="banner-w3lstext">
+					<h1><a href="/">JasMart<span> Welcome To Trendy</span></a></h1>
+					<p>Nulla ultricies nunc et lorem semper quis accumsan dui aliquam aucibus sagittis placerat quis
+						accumsan</p>
+				</div>
+			</div>
+		</div>
+		<!-- //banner-text -->
+	</div>
+	{{!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <a href="/shop-page"><div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100 carousel-height" src="/admin/images/image-1679726556522-258490771.jpg" alt="First slide">
+    </div>
+	{{#each banner}}
+    <div class="carousel-item">
+      <img class="d-block w-100 carousel-height" src="/admin/images/{{this.image.filename}}" alt="Second slide">
+    </div>
+	{{/each}}
+   
+  </div></a>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div></div> --}}
+<div id="bannerCarousel" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    {{#each banner}}
+      <li data-target="#bannerCarousel" data-slide-to="{{@index}}" {{#if @first}}class="active"{{/if}}></li>
+    {{/each}}
+  </ol>
+  <div class="carousel-inner">
+    {{#each banner}}
+      <div class="carousel-item {{#if @first}}active{{/if}}">
+        <a href="{{this.url}}"><img class="d-block w-100 h-75" src="/admin/images/{{this.image.filename}}" alt="{{this.name}}"></a>
+      </div>
+    {{/each}}
+  </div>
+  <a class="carousel-control-prev" href="#bannerCarousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#bannerCarousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+	<!-- //banner -->
+	<!-- banner-bottom-grids -->
+	<div id="about" class="banner-bottom-grids">
+		<div class="col-md-7 col-xs-7 banner-bottom-grid-left animated wow fadeInLeft" data-wow-duration="1000ms"
+			data-wow-delay="500ms">
+			<h2>Discover the art for <span> Women</span></h2>
+			<p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil
+				molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur
+				ut labore et dolore magnam velit esse quam.</p>
+
+		</div>
+		<div class="col-md-5 col-xs-5 banner-bottom-grid animated wow fadeInRight" data-wow-duration="1000ms"
+			data-wow-delay="500ms">
+			<img src="https://source.unsplash.com/E-0ON3VGrBc/600x300" alt=" " class="img-responsive">
+
+		</div>
+
+		<div class="clearfix"> </div>
+	</div>
+	<!-- //banner-bottom-grids -->
+	<!-- progress -->
+	<div class="wthree_progress" id="work">
+		<div class="col-md-6 col-xs-6 w3_agileits_progress_right">
+			<h3 class="agileinfo_title">Discover the art for <span>Men</span> </h3>
+			<p>Ut vel condimentum tortor. Donec placerat mi vel ante volutpat ultrices.
+				Praesent vestibulum, nisi vitae aliquet elementum, dolor libero finibus ex,
+				et condimentum tellus nunc vel dolor. </p>
+		</div>
+		<div class="col-md-6 col-xs-6 w3_agileits_progress_left">
+			<div class="agileits_progress_left_grid">
+
+			</div>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+	<div id="about" class="banner-bottom-grids">
+		<div class="col-md-7 col-xs-7 banner-bottom-grid-left animated wow fadeInLeft" data-wow-duration="1000ms"
+			data-wow-delay="500ms">
+			<h2>Discover the art for <span> Kids</span></h2>
+			<p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil
+				molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur
+				ut labore et dolore magnam velit esse quam.</p>
+		</div>
+		<div class="col-md-5 col-xs-5 banner-bottom-grid animated wow fadeInRight" data-wow-duration="1000ms"
+			data-wow-delay="500ms">
+			<img src="https://source.unsplash.com/j1GiPlvSGWI/600x300" style="background-size: contain;" alt=" "
+				class="img-responsive">
+
+		</div>
+
+		<div class="clearfix"> </div>
+	</div>
+	<!-- //progress -->
+	<!-- Stats -->
+	<script src="js/waypoints.min.js"></script>
+	<script src="js/counterup.min.js"></script>
+	<script>
+		jQuery(document).ready(function ($) {
+			$('.counter').counterUp({
+				delay: 10,
+				time: 2000
+			});
+		});
+	</script>
+	<!-- //Stats -->
+	<!-- services -->
+	<div id="services" class="services">
+		<div class="container">
+			<h3 class="agileinfo_title"><span>We</span> </h3>
+			<div class="services-agileinfo">
+
+
+				<div class="col-sm-4 col-xs-6 services-w3grids">
+					<div class="services-icon hvr-radial-in">
+						<i class="fa fa-check-square-o" aria-hidden="true"></i>
+					</div>
+					<p>Quality Assurance</p>
+				</div>
+
+				<div class="col-sm-4 col-xs-6 services-w3grids">
+					<div class="services-icon hvr-radial-in">
+						<i class="fa fa-truck" aria-hidden="true"></i>
+					</div>
+					<p>Fast Delivery</p>
+				</div>
+				<div class="col-sm-4 col-xs-6 services-w3grids">
+					<div class="services-icon hvr-radial-in">
+						<i class="fa fa-plane" aria-hidden="true"></i>
+					</div>
+					<p>Worldwide Service</p>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!-- //services -->
+	<!-- gallery -->
+
+	<!-- //gallery -->
+	<!-- about-team -->
+
+	<!-- //about-team -->
+	<!-- about-slid -->
+
+	<!-- //about-slid -->
+	<!-- blog -->
+
+	<!-- //blog -->
+	<!-- modal -->
+	<!-- //modal -->
+	<!-- subscribe -->
+	<!-- //subscribe -->
+	<!-- map -->
+	{{!-- <div id="contact" class="map">
+		<div class="col-sm-6 map-right">
+			<iframe
+				src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d2482.432383990807!2d0.028213999961443994!3d51.52362882484525!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1423469959819"></iframe>
+		</div>
+		<div class="map-pos">
+			<div class="address-row">
+				<div class="col-xs-2 address-left">
+					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+				</div>
+				<div class="col-xs-10 address-right">
+					<h5>Visit Us</h5>
+					<p>Bmr St, Canada, New York, USA</p>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="address-row w3-agileits">
+				<div class="col-xs-2 address-left">
+					<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+				</div>
+				<div class="col-xs-10 address-right">
+					<h5>Mail Us</h5>
+					<p><a href="mailto:info@example.com"> mail@example.com</a></p>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="address-row">
+				<div class="col-xs-2 address-left">
+					<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+				</div>
+				<div class="col-xs-10 address-right">
+					<h5>Call Us</h5>
+					<p>+01 222 333 4444</p>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div> --}}
+	<!-- //map -->
+	<!-- contact -->
+
+	<!-- copy rights start here -->
+	<div class="copyw3-agile">
+		<div class="container">
+			<div class="social-w3lsicon footer-w3icons">
+				<a href="#"><i class="fa fa-facebook"></i></a>
+				<a href="#"><i class="fa fa-google-plus"></i></a>
+				<a href="#"><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-dribbble"></i></a>
+			</div>
+		</div>
+	</div>
+	<!-- //copy right end here -->
+	<!-- Owl-Carousel-JavaScript -->
+	<script src="js/owl.carousel.js"></script>
+	<script>
+		$(document).ready(function () {
+			$("#owl-demo").owlCarousel({
+				items: 4,
+				lazyLoad: true,
+				autoPlay: true,
+				pagination: false,
+			});
+		});
+	</script>
+	<!-- //Owl-Carousel-JavaScript -->
+	<!-- jarallax -->
+	<script src="js/SmoothScroll.min.js"></script>
+	<script src="js/jarallax.js"></script>
+	<script type="text/javascript">
+		/* init Jarallax */
+		$('.jarallax').jarallax({
+			speed: 0.5,
+			imgWidth: 1366,
+			imgHeight: 768
+		})
+	</script>
+	<!-- //jarallax -->
+	<!-- start-smooth-scrolling -->
+	<script type="text/javascript" src="/user/js/move-top.js"></script>
+	<script type="text/javascript" src="/user/js/easing.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+
+				$('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+			});
+		});
+	</script>
+	<!-- //end-smooth-scrolling -->
+	<!-- smooth-scrolling-of-move-up -->
+	<script type="text/javascript">
+		$(document).ready(function () {
+			/*
+			var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+			};
+			*/
+
+			$().UItoTop({ easingType: 'easeOutQuart' });
+
+		});
+	</script>
+	
+
+	<script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+	<!-- //smooth-scrolling-of-move-up -->
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="/user/js/bootstrap.js"></script>
+</body>
+
+</html>/user/

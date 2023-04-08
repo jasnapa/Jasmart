@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date Range Input</title>
+    <script>
+        function restrictToDate() {
+            var fromDate = new Date(document.getElementById("from_date").value);
+            var toDateInput = document.getElementById("to_date");
+
+            // Calculate the minimum allowed "to" date as one day after the "from" date
+            var minToDate = new Date(fromDate);
+            minToDate.setDate(fromDate.getDate() + 1);
+            var minToDateISO = minToDate.toISOString().split('T')[0];
+
+            // Set the minimum allowed "to" date in the "to" date input field
+            toDateInput.setAttribute("min", minToDateISO);
+        }
+    </script>
+</head>
+<body>
+    <h1>Date Range Input</h1>
+    <form action="process.php" method="post">
+        <label for="from_date">From:</label>
+        <input type="date" id="from_date" name="from_date" onchange="restrictToDate()" required>
+
+        <label for="to_date">To:</label>
+        <input type="date" id="to_date" name="to_date" required>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

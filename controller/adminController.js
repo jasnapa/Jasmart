@@ -8,7 +8,7 @@ const multer = require('multer')
 const bannerModel = require('../model/bannerModel')
 const couponModel = require('../model/couponModel')
 const cloudinary = require('cloudinary')
-const path= require('path')
+const path = require('path')
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
@@ -224,32 +224,32 @@ var adminController = {
         try {
             const { name, category, subcategory, mrp, price, stock, description } = req.body
             if (name.trim() !== "" && mrp.trim() !== "" && price.trim() !== "" && stock.trim() !== "" && description.trim() !== "") {
-               
+
                 const image = req.files.image[0]
                 const SubImage = req.files.SubImage
-                let imageFile = await cloudinary.uploader.upload(image.path ,{folder:'JasMart' })
+                let imageFile = await cloudinary.uploader.upload(image.path, { folder: 'JasMart' })
                 let productImg = imageFile
 
                 for (let i in SubImage) {
-                    let imageFile = await cloudinary.uploader.upload(SubImage[i].path ,{folder:'JasMart' })
+                    let imageFile = await cloudinary.uploader.upload(SubImage[i].path, { folder: 'JasMart' })
                     SubImage[i] = imageFile
                 }
-                let product = new productModel({ name, category, subcategory, mrp, price, stock, description, image:productImg, SubImage:SubImage })
+                let product = new productModel({ name, category, subcategory, mrp, price, stock, description, image: productImg, SubImage: SubImage })
                 await product.save()
 
                 sharp(image.path)
-                .png()
-                .resize(300, 300, {
-                    kernel: sharp.kernel.nearest,
-                    fit: 'contain',
-                    position: 'center',
-                    background: { r: 255, g: 255, b: 255, alpha: 0 }
-                })
-                .toFile(image.path + ".png")
-                .then(() => {
-                    image.filename = image.filename + ".png"
-                    image.path = image.path + ".png"
-                })
+                    .png()
+                    .resize(300, 300, {
+                        kernel: sharp.kernel.nearest,
+                        fit: 'contain',
+                        position: 'center',
+                        background: { r: 255, g: 255, b: 255, alpha: 0 }
+                    })
+                    .toFile(image.path + ".png")
+                    .then(() => {
+                        image.filename = image.filename + ".png"
+                        image.path = image.path + ".png"
+                    })
                 res.redirect('/admin/products')
             } else {
                 res.render('adminAddProduct', { error: true, message: 'please enter all the fields' })
@@ -292,12 +292,12 @@ var adminController = {
             const image = req.files.image[0]
             const SubImage = req.files.SubImage
             console.log(image);
-            let imageFile = await cloudinary.uploader.upload(image.path ,{folder:'JasMart' })
+            let imageFile = await cloudinary.uploader.upload(image.path, { folder: 'JasMart' })
             let productImg = imageFile
-            console.log("shjhsaj",imageFile);
+            console.log("shjhsaj", imageFile);
 
             for (let i in SubImage) {
-                let imageFile = await cloudinary.uploader.upload(SubImage[i].path ,{folder:'JasMart' })
+                let imageFile = await cloudinary.uploader.upload(SubImage[i].path, { folder: 'JasMart' })
                 SubImage[i] = imageFile
             }
             const { name, category, subcategory, mrp, stock, price, description, _id } = req.body
@@ -395,11 +395,14 @@ var adminController = {
     getAdminAddBanner: (req, res) => {
         res.render('adminAddBanner')
     },
-    postAdminAddBanner: (req, res) => {
+    postAdminAddBanner:async (req, res) => {
         try {
             const { info, url } = req.body
+            const image = req.files.image[0]
+            let imageFile = await cloudinary.uploader.upload(image.path, { folder: 'JasMart' })
+            let img = imageFile
             if (info.trim() !== "" || url.trim() !== "") {
-                let banner = new bannerModel({ info, url, image: req.files.image[0] })
+                let banner = new bannerModel({ info, url, image:img })
                 banner.save()
                 res.redirect('/admin/banner')
 

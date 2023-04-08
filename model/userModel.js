@@ -27,6 +27,10 @@ const userSchema = new mongoose.Schema({
         type:Array,
         default:[]
     },
+    wishlist:{
+        type:Array,
+        default:[]
+    },
     address:{
         type:Array
     }

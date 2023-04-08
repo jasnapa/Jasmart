@@ -8,13 +8,15 @@ const connectDB = require("./config/dbConnect")
 const path= require('path')
 require('dotenv').config()
 
-app.use(express.static(path.resolve(__dirname, 'Public')))
+
 const cloudinary = require('cloudinary')
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY, 
     api_secret: process.env.CLOUDINARY_API_SECRET
 });
+
+app.use(express.static(path.resolve(__dirname,'public')))
 
 app.set("view engine","hbs")
 

@@ -20,7 +20,7 @@
 		<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0000004a;">
 			<div class="container px-4 px-lg-5">
 				<a class="navbar-brand text-warning font-weight-bold" style="font-size: x-large;" href="/">Jas Mart
-					</a>
+				</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 					aria-expanded="false" aria-label="Toggle navigation"><span
@@ -33,25 +33,28 @@
 						<li class="nav-item"><a class="nav-link " href="/products?category=kids">Kids</a></li>
 					</ul>
 					<form class="d-flex">
+						<a href="/wishlist" class="btn text-light btn-sm  me-3" type="submit">
+							<i class="bi bi-bag-heart-fill me-2"></i><span>Wishlist</span>
+						</a>
 						<a href="/getCart" class="btn- text-light btn-sm mr-3" type="submit">
 							<i class="bi-cart-fill mr-2"></i><span>Cart</span>
-						 </a>
-                    {{#if Log}}
-                    <div class="dropdown">
-                        <button class="btn text-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="bi bi-person-circle me-2"></i> {{Log}}
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/userProfile">Profile</a></li>
-                            <li><a class="dropdown-item" href="/UserLogout">Logout</a></li>
-                        </ul>
-                    </div>
-                    {{else}}
-                    <a href="/login" class="btn btn-sm btn-outline-warning" type="submit">
-                        <i class="bi bi-door-open"></i></i>
-                        Login
-                    </a>{{/if}}
+						</a>
+						{{#if Log}}
+						<div class="dropdown">
+							<button class="btn text-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+								aria-expanded="false">
+								<i class="bi bi-person-circle me-2"></i> {{Log}}
+							</button>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="/userProfile">Profile</a></li>
+								<li><a class="dropdown-item" href="/UserLogout">Logout</a></li>
+							</ul>
+						</div>
+						{{else}}
+						<a href="/login" class="btn btn-sm btn-outline-warning" type="submit">
+							<i class="bi bi-door-open"></i></i>
+							Login
+						</a>{{/if}}
 					</form>
 				</div>
 			</div>
@@ -65,7 +68,9 @@
 				<div class="profile-tab-nav border-right col-6 col-md-4">
 					<div class="p-4 text-monospace">
 						<div class="img-circle  text-center mb-3">
-							<img width="50px" height="100px" src="https://static.vecteezy.com/system/resources/previews/009/397/892/original/woman-face-expression-clipart-design-illustration-free-png.png" alt="Image" class="shadow">
+							<img width="50px" height="100px"
+								src="https://static.vecteezy.com/system/resources/previews/009/397/892/original/woman-face-expression-clipart-design-illustration-free-png.png"
+								alt="Image" class="shadow">
 						</div>
 						<h4 class="mb-3 text-center font-weight-bold ">{{profile.name}} </h4>
 						<p class="font-italic">Email : {{profile.email}}</p>
@@ -173,13 +178,11 @@
 										{{#each address}}
 										<li class="list-group-item mb-3 ">
 											<!-- Button trigger modal -->
-											<a href="/editUserAddress" data-toggle="modal"
-												data-target="#{{this.id}}">
+											<a href="/editUserAddress" data-toggle="modal" data-target="#{{this.id}}">
 												Edit
 											</a>
 
-											{{!-- <a href="/deleteAddress/{{this._id}}" 
-												data-target="#{{this.id}}">
+											{{!-- <a href="/deleteAddress/{{this._id}}" data-target="#{{this.id}}">
 												Delete
 											</a> --}}
 

@@ -14,7 +14,7 @@
 		integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
 	<link href="/user/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
 	<link href="/user/css/style.css" type="text/css" rel="stylesheet" media="all">
-	
+
 	<link href="/user/css/font-awesome.css" rel="stylesheet"> <!-- font-awesome icons -->
 	<link rel="stylesheet" href="css/owl.carousel.css" type="text/css" media="all" /> <!-- Owl-Carousel-CSS -->
 	<link href='/user/css/simplelightbox.css' rel='stylesheet' type='text/css'>
@@ -127,7 +127,7 @@
   <div class="carousel-inner">
     {{#each banner}}
       <div class="carousel-item {{#if @first}}active{{/if}}">
-        <a href="{{this.url}}"><img class="d-block w-100 h-75" src="/admin/images/{{this.image.filename}}" alt="{{this.name}}"></a>
+        <a href="{{this.url}}"><img class="d-block w-100 h-75" src="{{this.image.url}}" alt="{{this.name}}"></a>
       </div>
     {{/each}}
   </div>

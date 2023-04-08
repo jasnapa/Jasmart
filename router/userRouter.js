@@ -1,5 +1,5 @@
 const express = require("express")
-const { getUserLogin, getUserSignup, postRegister, getOtp, postSendOtp, getUserHome, postUserLogin, getProducts, postProductSearch, getAdminViewProduct, getAddToCart, getCart, getCheckout, getUserLogout, getDeleteCart, getUserQuantityUpdate, resendotp, getIncrement, getDecrement, getUserProfile, postAddUserAddress, postCheckout, getOrderHistory, getPaymentURL, getViewOrder, postEditUserProfile, postEditUserAddress, getDeleteUserAddress } = require("../controller/userController")
+const { getUserLogin, getUserSignup, postRegister, getOtp, postSendOtp, getUserHome, postUserLogin, getProducts, postProductSearch, getAdminViewProduct, getAddToCart, getCart, getCheckout, getUserLogout, getDeleteCart, getUserQuantityUpdate, resendotp, getIncrement, getDecrement, getUserProfile, postAddUserAddress, postCheckout, getOrderHistory, getPaymentURL, getViewOrder, postEditUserProfile, postEditUserAddress, getDeleteUserAddress, getDeleteWish, getUserWishlist, getAddtoWishlist, getUserMoveCart } = require("../controller/userController")
 const verifyUser = require("../middleware/verifyUser")
 const router = express.Router()
 
@@ -29,6 +29,10 @@ router.get('/viewOrder/:id', verifyUser, getViewOrder)
 router.post('/editUserProfile', verifyUser, postEditUserProfile)
 router.post('/editUserAddress', verifyUser, postEditUserAddress)
 router.get('/deleteAddress/:id', verifyUser, getDeleteUserAddress)
+router.get('/DeleteWish/:id',getDeleteWish)
+router.get('/wishlist',verifyUser,getUserWishlist)
+router.get('/AddWishlist/:id',verifyUser,getAddtoWishlist)
+router.get('/MoveCart/:id',verifyUser,getUserMoveCart)
 
 
 

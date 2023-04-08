@@ -23,20 +23,20 @@ var userController = {
         }
     },
     getUserHome: async (req, res) => {
-            try {
-                const user = await userModel.findOne({ _id: req.session.user_id, block: false }, { password: 0 })
-                if (user) {
-                    const Log = req.session.user_name
-                    let banner = await bannerModel.find({})
-                    res.render('userHome', { Log, banner })
-                } else {
-                    req.session = null;
-                    let banner = await bannerModel.find({})
-                    res.render('userHome', { banner })
-                }
-            } catch (err) {
-                console.log(err);
+        try {
+            const user = await userModel.findOne({ _id: req.session.user_id, block: false }, { password: 0 })
+            if (user) {
+                const Log = req.session.user_name
+                let banner = await bannerModel.find({})
+                res.render('userHome', { Log, banner })
+            } else {
+                req.session = null;
+                let banner = await bannerModel.find({})
+                res.render('userHome', { banner })
             }
+        } catch (err) {
+            console.log(err);
+        }
 
     },
 
@@ -229,7 +229,7 @@ var userController = {
                 pagination.push(i);
             }
             const Log = req.session.user_name
-            res.render('productList', { products,Log,sort, Category, pagination })
+            res.render('productList', { products, Log, sort, Category, pagination })
         } catch (err) {
             console.log(err);
 
@@ -321,15 +321,15 @@ var userController = {
             if (code) {
                 let coupon = await couponModel.findOne({ code: code })
                 if (coupon) {
-                    if(TotalAmount >= coupon.minamount && TotalAmount <= coupon.maxamount){
-                    let expiry = coupon.expiry
-                    Code = coupon.code
-                    minus = coupon.cashback
-                    TotalAmount = TotalAmount - minus
-                    Result = TotalAmount
-                    req.session.coupon = coupon
-                    req.session.TotalAmount = TotalAmount
-                    }else{
+                    if (TotalAmount >= coupon.minamount && TotalAmount <= coupon.maxamount) {
+                        let expiry = coupon.expiry
+                        Code = coupon.code
+                        minus = coupon.cashback
+                        TotalAmount = TotalAmount - minus
+                        Result = TotalAmount
+                        req.session.coupon = coupon
+                        req.session.TotalAmount = TotalAmount
+                    } else {
                         Reject = true
                     }
 
@@ -338,7 +338,7 @@ var userController = {
                     Invalid = true
                 }
             }
-            res.render('addToCart', { products, Log, TotalAmount, Result, Invalid, minus, Code,Reject })
+            res.render('addToCart', { products, Log, TotalAmount, Result, Invalid, minus, Code, Reject })
         } catch (err) {
             console.log(err);
 
@@ -602,7 +602,7 @@ var userController = {
                 console.log(orders);
                 await orderModel.create(orders)
                 let orderId = req.session.orderId
-                const Log = req.session.user
+                const Log = req.session.user_name
                 await userModel.findByIdAndUpdate({ _id }, { $set: { cart: [] } })
                 await orderModel.updateMany({ orderId }, { $set: { paid: true } })
                 console.log('sjfghsjdgfjkshgfgjksfdh');
@@ -625,10 +625,13 @@ var userController = {
         res.render('orderHistory', { order })
     },
     getViewOrder: async (req, res) => {
+        const Log = req.session.user_name
         let _id = req.params.id
         let order = await orderModel.findById({ _id })
         console.log(order);
-        res.render('orderView', { order })
+        let products = order.product
+        console.log("sdlsdl", products);
+        res.render('orderView', { order, products, Log })
     },
     postEditUserProfile: async (req, res) => {
 
@@ -649,7 +652,7 @@ var userController = {
             const { name, email, address, landmark, country, state, pincode, id } = req.body;
 
             const result = await userModel.updateOne(
-                { _id: userId, "address.id":parseInt(id) },
+                { _id: userId, "address.id": parseInt(id) },
                 {
                     $set: {
                         "address.$.name": name,
@@ -662,7 +665,7 @@ var userController = {
                     }
                 }
             );
-           
+
             res.redirect('back')
         } catch (err) {
             console.log(err);
@@ -673,15 +676,79 @@ var userController = {
             let aid = req.params.id
             const _id = req.session.user_id;
             console.log(aid);
-            let result=await userModel.updateOne({ _id:_id }, { $pull: { address: { id:parseInt(aid) } } }, { multi: true })         
+            let result = await userModel.updateOne({ _id: _id }, { $pull: { address: { id: parseInt(aid) } } }, { multi: true })
             console.log(result);
-             res.redirect('back')
+            res.redirect('back')
         } catch (err) {
             console.log(err);
 
         }
-    }
-    
+    },
+    getUserWishlist: async (req, res) => {
+        try {
+            _id = req.session.user_id
+            const { wishlist } = await userModel.findOne({ _id }, { wishlist: 1 })
+            console.log(wishlist);
+            const wishItems = wishlist.map((item) => {
+                return item
+            })
+            const Log = req.session.user_name
+            const products = await productModel.find({ _id: { $in: wishItems } }).lean()
+            res.render('wishlist', { products, Log })
+        } catch (err) {
+            console.log(err);
+        }
+    },
+    getAddtoWishlist: async (req, res) => {
+
+        try {
+            const _id = req.session.user_id
+            const proId = req.params.id
+            await userModel.updateOne({ _id }, { $addToSet: { wishlist: { _id: proId } } })
+            console.log('success');
+            res.redirect('back')
+        } catch (err) {
+            console.log(err);
+        }
+    },
+    getDeleteWish: async (req, res) => {
+        try {
+            if (req.session.user) {
+                proId = req.params.id
+                _id = req.session.user_id
+                await userModel.updateOne({ _id }, { $pull: { wishlist: { _id: proId } } }, { multi: true }).then(() => {
+                    console.log('deleted succesfully')
+                    res.redirect('/Wishlist')
+                }).catch(err => {
+                    res.json(err)
+                    console.log(err)
+                })
+            } else {
+                res.render('ErrorCart')
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    },
+    getUserMoveCart: async (req, res) => {
+        try {
+            _id = req.session.user_id
+            proId = req.params.id
+            console.log(proId);
+            await userModel.updateOne({ _id }, {
+                $addToSet: {
+                    cart: {
+                        product_id: proId, quantity: 1
+                    }
+                }
+            })
+            await userModel.updateOne({ _id }, { $pull: { wishlist: { _id: proId } } }, { multi: true })
+            res.redirect('back')
+        } catch (err) {
+            console.log(err);
+        }
+    },
+
 
 }
 

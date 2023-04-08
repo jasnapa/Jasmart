@@ -214,122 +214,96 @@
 </head>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
-
-{{!-- <body id="body-pd">
-    <header class="header" id="header">
-        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
-    </header> --}}
-    {{!-- <div class="l-navbar" id="nav-bar">
-        <nav class="nav">
-            <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span
-                        class="nav_logo-name">Admin</span> </a>
-                <div class="nav_list"> <a href="/admin/dash" title="Dashboard" class="nav_link "> <i
-                            class='bx bx-grid-alt nav_icon'></i>
-                        <span class="nav_name">Dashboard</span> </a> <a title="Users" href="/admin/user"
-                        class="nav_link "> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a>
-                    <a title="Products" href="/admin/products" class="nav_link active"> <i
-                            class='bx bx-folder nav_icon'></i><span class="nav_name">Products</span> </a>
-                    <a title="Category" href="/admin/category" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i>
-                        <span class="nav_name">Category</span> </a>
-                        <a title="Orders" href="/admin/order" class="nav_link "> <i class='bx bxs-pie-chart-alt-2 nav_icon' ></i>
-                  <span class="nav_name">Orders</span> </a>
-                  <a title="Banner" href="/admin/banner" class="nav_link"><i class='bx bxs-image nav_icon'></i> <span
-                     class="nav_name">Banner</span> </a>
-                </div> --}}
-            {{!-- </div> <a href="/admin/Adminlogout" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
-                    class="nav_name">SignOut</span> </a>
-        </nav>
-    </div> --}}
-    <!--Container Main start-->
-    {{!-- <a href="/admin/addproduct" class="btn btn-sm btn-success">Add Product</a> --}}
-    <body>
-         <div class="agileits-banner jarallax">
+<body style="margin: 0;padding: 0;">
+    <div class="agileits-banner jarallax">
         <!-- navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #0000004a;">
-        <div class="container px-4 px-lg-5">
-            <a class="navbar-brand text-warning fw-bold fs-2" href="/">Jas Mart</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link " aria-current="page" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link " href="/products?category=men">Men</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/products?category=women">Women</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/products?category=kids">Kids</a></li>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0000004a;">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand text-warning fw-bold fs-2" href="/">Jas Mart</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"><span
+                        class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link " aria-current="page" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link " href="/products?category=men">Men</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/products?category=women">Women</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/products?category=kids">Kids</a></li>
 
-                     </ul>
-                <form class="d-flex justify-content-end mt-3">
-                    <a href="/getCart" class="btn text-light btn-sm me-3" type="submit">
-                        <i class="bi-cart-fill me-2"></i><span>Cart</span>
+                    </ul>
+                    <form class="d-flex justify-content-end mt-3">
+                        <a href="/getCart" class="btn text-light btn-sm me-3" type="submit">
+                            <i class="bi-cart-fill me-2"></i><span>Cart</span>
 
-                    </a>
+                        </a>
 
-                     {{#if Log}}
-                    <div class="dropdown">
-                        <button class="btn text-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="bi bi-person-circle me-2"></i> {{Log}}
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/userProfile">Profile</a></li>
-                            <li><a class="dropdown-item" href="/UserLogout">Logout</a></li>
-                        </ul>
-                    </div>
-                    {{else}}
-                    <a href="/login" class="btn btn-sm btn-outline-warning" type="submit">
-                        <i class="bi bi-door-open"></i></i>
-                        Login
-                    </a>{{/if}}
-                </form>
+                        {{#if Log}}
+                        <div class="dropdown">
+                            <button class="btn text-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="bi bi-person-circle me-2"></i> {{Log}}
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/userProfile">Profile</a></li>
+                                <li><a class="dropdown-item" href="/UserLogout">Logout</a></li>
+                            </ul>
+                        </div>
+                        {{else}}
+                        <a href="/login" class="btn btn-sm btn-outline-warning" type="submit">
+                            <i class="bi bi-door-open"></i></i>
+                            Login
+                        </a>{{/if}}
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <div>
+            <div class="card mt-5">
+                <div class="card-body">
+                    <table class="table table-borderless table-hover">
+
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>ORDER ID</th>
+                                <th>PRODUCT NAME</th>
+                                <th>IMAGE</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {{#each order}}
+                            <tr>
+                                <td>{{@index}}</td>
+                                <td>{{this.orderId}}</td>
+                                <td>{{this.product.name}}</td>
+                                <td><img width="50px" height="60px" src="{{this.product.image.url}}" alt=""></td>
+                                <td>{{this.status}}</td>
+                                <td>
+                                    <a href="/viewOrder/{{this._id}}" class="btn btn-sm btn-success">view</a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </nav>
-    <div class="card mt-5">
-        <div class="card-body">
-            <table class="table table-borderless table-hover">
-
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>ORDER ID</th>
-                        <th>PRODUCT NAME</th>
-                        <th>IMAGE</th>   
-                    </tr>
-                </thead>
-
-                <tbody>
-                    {{#each order}}
-                    <tr>
-                        <td>{{@index}}</td>
-                        <td>{{this.orderId}}</td>
-                        <td>{{this.product.name}}</td>
-                        <td><img width="50px" height="60px" src="/admin/images/{{this.product.image.[0].filename}}" alt=""></td>
-                        <td>{{this.status}}</td>
-                        <td>
-                            <a href="/viewOrder/{{this._id}}" class="btn btn-sm btn-success">view</a>
-                        </td>
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-        </div>
-    </div>
 
 
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
-    <script src="assets/js/apexcharts.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/chart.min.js"></script>
-    <script src="assets/js/echarts.min.js"></script>
-    <script src="assets/js/quill.min.js"></script>
-    <script src="assets/js/simple-datatables.js"></script>
-    <script src="assets/js/tinymce.min.js"></script>
-    <script src="assets/js/validate.js"></script>
-    <script src="assets/js/main.js"></script>
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+                class="bi bi-arrow-up-short"></i></a>
+        <script src="assets/js/apexcharts.min.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/chart.min.js"></script>
+        <script src="assets/js/echarts.min.js"></script>
+        <script src="assets/js/quill.min.js"></script>
+        <script src="assets/js/simple-datatables.js"></script>
+        <script src="assets/js/tinymce.min.js"></script>
+        <script src="assets/js/validate.js"></script>
+        <script src="assets/js/main.js"></script>
 
 </body>
 

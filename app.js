@@ -8,7 +8,11 @@ const connectDB = require("./config/dbConnect")
 const path= require('path')
 require('dotenv').config()
 
+<<<<<<< HEAD
 
+=======
+app.use(express.static(path.resolve(__dirname, 'public')))
+>>>>>>> 0df1341a836e801b3f0f3acf30de687bf18dedbb
 const cloudinary = require('cloudinary')
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,

@@ -3,7 +3,7 @@
 
 <head>
     <title>ProductList</title>
-     <link href="/admin/favicon.ico" rel="icon">
+    <link href="/admin/favicon.ico" rel="icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Footwear Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -32,74 +32,75 @@
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <!-- //web-fonts -->
 </head>
-<style>
+{{!-- <style>
     @media screen and (min-width: 768px) {
         .navbar {
             width: 100 vh;
         }
 
     }
-</style>
+</style> --}}
 
 <body>
     <!-- banner -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #0000004a;">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand text-warning fw-bold fs-2" href="/">Jas Mart</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse ms-5" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto navbar-left mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link " aria-current="page" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link " href="/products?category=men">Men</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/products?category=women">Women</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/products?category=kids">Kids</a></li>
+                </ul>
+                <form class="d-flex justify-content-end mt-3">
+                    <a href="/wishlist" class="btn text-light btn-sm  me-3" type="submit">
+                        <i class="bi bi-bag-heart-fill me-2"></i><span>Wishlist</span>
+                    </a>
+
+
+                    <a href="/getCart" class="btn text-light btn-sm me-3" type="submit">
+                        <i class="bi-cart-fill me-2"></i><span>Cart</span>
+
+                    </a>
+                    {{!-- <a href="/Wishlist" class="btn text-light btn-sm  me-3" type="submit">
+                        <i class="bi bi-bag-heart-fill me-2"></i><span>Wishlist</span> --}}
+                        {{!-- <span class="badge bg-dark text-white ms-1 rounded-pill">0</span> --}}
+                    </a>
+                    {{#if Log}}
+                    <div class="dropdown">
+                        <button class="btn text-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="bi bi-person-circle me-2"></i> {{Log}}
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/userProfile">Profile</a></li>
+                            <li><a class="dropdown-item" href="/UserLogout">Logout</a></li>
+                        </ul>
+                    </div>
+                    {{else}}
+                    <a href="/login" class="btn btn-sm btn-outline-warning" type="submit">
+                        <i class="bi bi-door-open"></i></i>
+                        Login
+                    </a>{{/if}}
+                </form>
+            </div>
+        </div>
+    </nav>
     <div class="agileits-banner jarallax">
         <!-- navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #0000004a;">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand text-warning fw-bold fs-2" href="/">Jas Mart</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation"><span
-                        class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link " aria-current="page" href="/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link " href="/products?category=men">Men</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/products?category=women">Women</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/products?category=kids">Kids</a></li>
-                    </ul>
-                    <form class="d-flex justify-content-end mt-3">
-                        <a href="/wishlist" class="btn text-light btn-sm  me-3" type="submit">
-							<i class="bi bi-bag-heart-fill me-2"></i><span>Wishlist</span>
-						</a>
 
-
-                        <a href="/getCart" class="btn text-light btn-sm me-3" type="submit">
-                            <i class="bi-cart-fill me-2"></i><span>Cart</span>
-
-                        </a>
-                        {{!-- <a href="/Wishlist" class="btn text-light btn-sm  me-3" type="submit">
-                            <i class="bi bi-bag-heart-fill me-2"></i><span>Wishlist</span> --}}
-                            {{!-- <span class="badge bg-dark text-white ms-1 rounded-pill">0</span> --}}
-                        </a>
-                        {{#if Log}}
-                        <div class="dropdown">
-                            <button class="btn text-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                <i class="bi bi-person-circle me-2"></i> {{Log}}
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/userProfile">Profile</a></li>
-                                <li><a class="dropdown-item" href="/UserLogout">Logout</a></li>
-                            </ul>
-                        </div>
-                        {{else}}
-                        <a href="/login" class="btn btn-sm btn-outline-warning" type="submit">
-                            <i class="bi bi-door-open"></i></i>
-                            Login
-                        </a>{{/if}}
-                    </form>
-                </div>
-            </div>
-        </nav>
         <form action="/searchProduct" method="get">
             <div class="inputs d-flex justify-content-end mt-4 me-5">
                 <div class="form-outline">
                     <input type="search" id="form1" name="Search" class="form-control" />
                     <input type="hidden" name="category" value="{{Category}}">
                 </div>
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn b
+                tn-primary">
                     <i class="fas fa-search"></i>
                 </button>
             </div>
@@ -166,6 +167,5 @@
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
 
-</body>
-
+  </body>
 </html>

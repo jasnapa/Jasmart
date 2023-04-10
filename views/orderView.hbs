@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <title>Document</title>
+    <title>OrderView</title>
     <link rel="stylesheet" href="/user/css/productView.css">
     <script src="/user/js/productView.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
@@ -31,6 +31,9 @@
                     <li class="nav-item"><a class="nav-link " href="/products?category=kids">Kids</a></li>
                 </ul>
                 <form class="d-flex text-center">
+                     <a href="/wishlist" class="btn text-light btn-sm  mr-3" type="submit">
+							<i class="bi bi-bag-heart-fill mr-2"></i><span>Wishlist</span>
+						</a>
                     <a href="/getCart" class="btn text-light btn-sm me-3" type="submit">
                         <i class="bi-cart-fill me-2"></i><span>Cart</span>
 
@@ -90,6 +93,7 @@
                                                 OFF</span>
                                         </div> --}}
                                     </div>
+                                    
                                     <span class="text-uppercase text-muted brand">Qty: {{order.quantity}}</span> <br>
                                     <span class="text-uppercase text-muted brand">Payment Method:
                                         {{order.address.paymentMethod}}</span> <br>
@@ -126,9 +130,9 @@
   let userName= '{{order.address.name}}'
   let address= '{{order.address.address}}'
   let dispatch= '{{order.orderDate}}'
-  let orders=[];
- {{#each products}}
- orders.push(['{{this.name}}','{{this.quantity}}','{{this.price}}',"{{this.totalPrice}}"])
+  let orders = []
+ {{#each order}}
+ orders.push(['{{this.product.name}}','{{this.product.quantity}}','{{this.product.price}}','{{this.product.totalPrice}}'])
  {{/each}}
  console.log(orders,'hello')
  orders.push( ["", "", "", ""],

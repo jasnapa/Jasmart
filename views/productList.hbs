@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>JasMart</title>
+    <title>ProductList</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Footwear Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -31,6 +31,14 @@
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <!-- //web-fonts -->
 </head>
+<style>
+    @media screen and (min-width: 768px) {
+        .navbar {
+            width: 100 vh;
+        }
+
+    }
+</style>
 
 <body>
     <!-- banner -->
@@ -49,20 +57,13 @@
                         <li class="nav-item"><a class="nav-link " href="/products?category=men">Men</a></li>
                         <li class="nav-item"><a class="nav-link" href="/products?category=women">Women</a></li>
                         <li class="nav-item"><a class="nav-link" href="/products?category=kids">Kids</a></li>
-                        {{!-- <li class="nav-item dropdkids
-                        <a class=" nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
-                                <li>
-                                    <hr class="dropdown-divider" />
-                                </li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                            </ul>
-                        </li> --}}
                     </ul>
                     <form class="d-flex justify-content-end mt-3">
+                        <a href="/wishlist" class="btn text-light btn-sm  mr-3" type="submit">
+							<i class="bi bi-bag-heart-fill mr-2"></i><span>Wishlist</span>
+						</a>
+
+
                         <a href="/getCart" class="btn text-light btn-sm me-3" type="submit">
                             <i class="bi-cart-fill me-2"></i><span>Cart</span>
 
@@ -92,15 +93,15 @@
             </div>
         </nav>
         <form action="/searchProduct" method="post">
-        <div class="inputs d-flex justify-content-end mt-4 me-5">
-            <div class="form-outline">
-                <input type="search" id="form1" name="Search" class="form-control" />
+            <div class="inputs d-flex justify-content-end mt-4 me-5">
+                <div class="form-outline">
+                    <input type="search" id="form1" name="Search" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                </button>
             </div>
-            <button type="submit" class="btn btn-primary">
-                <i class="fas fa-search"></i>
-            </button>
-        </div>
-            </form>
+        </form>
     </div>
 
     </div>
@@ -135,7 +136,7 @@
                         {{!-- <span>Nike</span> --}}
                         <h1 class="price">{{this.price}}</h1>
                     </div>
-                   
+
                     <a href="/viewProduct/{{this._id}}" class="btn prod">View Product</a>
                 </section>
             </div>
@@ -145,15 +146,16 @@
         {{/each}}
 
     </div>
-        <div class="col-lg-12">
+    <div class="col-lg-12">
 
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination" style="justify-content: center;">
-                            {{#each pagination}}
-                            <li class="page-item"><a class="page-link" href="/products/?sort={{../sort}}&&category={{../Category}}&&page={{this}}/"
-                                    style="color: black;">{{this}}</a></li>
-                            {{/each}}
-                </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination" style="justify-content: center;">
+                {{#each pagination}}
+                <li class="page-item"><a class="page-link"
+                        href="/products/?sort={{../sort}}&&category={{../Category}}&&page={{this}}/"
+                        style="color: black;">{{this}}</a></li>
+                {{/each}}
+    </div>
 
 
 

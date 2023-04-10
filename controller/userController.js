@@ -621,8 +621,9 @@ var userController = {
     },
     getOrderHistory: async (req, res) => {
         let _id = req.session.user_id
+        const Log = req.session.user_name
         let order = await orderModel.find({ userId: _id })
-        res.render('orderHistory', { order })
+        res.render('orderHistory', { order ,Log})
     },
     getViewOrder: async (req, res) => {
         const Log = req.session.user_name
@@ -741,7 +742,7 @@ var userController = {
                         product_id: proId, quantity: 1
                     }
                 }
-            })
+            })  
             await userModel.updateOne({ _id }, { $pull: { wishlist: { _id: proId } } }, { multi: true })
             res.redirect('back')
         } catch (err) {

@@ -483,8 +483,9 @@ var adminController = {
                     }
                 }
             }])
-            if (result[0].total) {
-                salesSum = result[0].total;
+            if (result.total) {
+                //result[0]
+                salesSum = result.total;
             }
         }
         let users = await orderModel.distinct('userId')

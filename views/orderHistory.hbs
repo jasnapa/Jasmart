@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Dashboard - Admin </title>
+    <title>JasMart</title>
     <meta name="robots" content="noindex, nofollow">
     <meta content="" name="description">
     <meta content="" name="keywords">
@@ -232,7 +232,11 @@
                         <li class="nav-item"><a class="nav-link" href="/products?category=kids">Kids</a></li>
 
                     </ul>
-                    <form class="d-flex justify-content-end mt-3">
+                    <form class="d-flex justify-content-end mt-3"> 
+                        <a href="/wishlist" class="btn text-light btn-sm  mr-3" type="submit">
+							<i class="bi bi-bag-heart-fill mr-2"></i><span>Wishlist</span>
+						</a>
+
                         <a href="/getCart" class="btn text-light btn-sm me-3" type="submit">
                             <i class="bi-cart-fill me-2"></i><span>Cart</span>
 
@@ -268,6 +272,7 @@
                                 <th>ID</th>
                                 <th>ORDER ID</th>
                                 <th>PRODUCT NAME</th>
+                                <th>ORDER STATUS</th>
                                 <th>IMAGE</th>
                             </tr>
                         </thead>
@@ -278,8 +283,8 @@
                                 <td>{{@index}}</td>
                                 <td>{{this.orderId}}</td>
                                 <td>{{this.product.name}}</td>
+                                <td>{{this.orderStatus}}</td>
                                 <td><img width="50px" height="60px" src="{{this.product.image.url}}" alt=""></td>
-                                <td>{{this.status}}</td>
                                 <td>
                                     <a href="/viewOrder/{{this._id}}" class="btn btn-sm btn-success">view</a>
                                 </td>

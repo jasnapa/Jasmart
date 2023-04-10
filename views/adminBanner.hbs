@@ -9,7 +9,6 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
     <link href="/admin/favicon/favicon.ico" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
     <link href="https://fonts.gstatic.com" rel="preconnect">
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
@@ -208,6 +207,17 @@
                 padding-left: calc(var(--nav-width) + 188px)
             }
         }
+        @media screen and (max-width: 768px) {
+         .card {
+            width: fit-content;
+            height: fit-content;
+            padding-left: 5vh;
+         }
+
+         body {
+            height: fit-content !important;
+         }
+      }
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <script src="/admin/js/sidebar.js"></script>
@@ -252,6 +262,8 @@
     <div>
         <a href="/admin/addbanner" class="btn btn-sm btn-success">Add Banner</a>
     </div>
+       <div style="overflow: scroll;">
+
     <div class="card mt-3">
         <div class="card-body">
             <table class="table table-borderless table-hover">
@@ -285,7 +297,7 @@
             </table>
         </div>
     </div>
-
+</div>
 
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i

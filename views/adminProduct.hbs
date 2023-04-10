@@ -208,6 +208,18 @@
                 padding-left: calc(var(--nav-width) + 188px)
             }
         }
+
+        @media screen and (max-width: 768px) {
+            .card {
+                width: fit-content;
+                height: fit-content;
+                padding-left: 5vh;
+            }
+
+            body {
+                height: fit-content !important;
+            }
+        }
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <script src="/admin/js/sidebar.js"></script>
@@ -232,14 +244,15 @@
                             class='bx bx-folder nav_icon'></i><span class="nav_name">Products</span> </a>
                     <a title="Category" href="/admin/category" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i>
                         <span class="nav_name">Category</span> </a>
-                        <a title="Orders" href="/admin/order" class="nav_link "> <i class='bx bxs-pie-chart-alt-2 nav_icon' ></i>
-                  <span class="nav_name">Orders</span> </a>
-                  <a title="Banner" href="/admin/banner" class="nav_link"><i class='bx bxs-image nav_icon'></i> <span
-                     class="nav_name">Banner</span> </a>
-                     <a title="Coupon" href="/admin/coupon" class="nav_link"> <i class='bx bxs-discount nav_icon'></i>
-                  <span class="nav_name">
-                     Coupon</span> </a>
-                      <a title="Sales Report" href="/admin/salesReport" class="nav_link"> <i
+                    <a title="Orders" href="/admin/order" class="nav_link "> <i
+                            class='bx bxs-pie-chart-alt-2 nav_icon'></i>
+                        <span class="nav_name">Orders</span> </a>
+                    <a title="Banner" href="/admin/banner" class="nav_link"><i class='bx bxs-image nav_icon'></i> <span
+                            class="nav_name">Banner</span> </a>
+                    <a title="Coupon" href="/admin/coupon" class="nav_link"> <i class='bx bxs-discount nav_icon'></i>
+                        <span class="nav_name">
+                            Coupon</span> </a>
+                    <a title="Sales Report" href="/admin/salesReport" class="nav_link"> <i
                             class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Sales
                             Report</span> </a>
                 </div>
@@ -249,72 +262,73 @@
     </div>
     <!--Container Main start-->
     <a href="/admin/addproduct" class="btn btn-sm btn-success">Add Product</a>
-    <div class="card mt-3">
-        <div class="card-body">
-            <table class="table table-borderless table-hover">
+    <div style="overflow: scroll;">
+        <div class="card mt-3">
+            <div class="card-body">
+                <table class="table table-borderless table-hover">
 
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>IMAGE</th>
-                        <th>NAME</th>
-                        <th>CATEGORY</th>
-                        <th>SUB-CATEGORY</th>
-                        <th>MRP</th>
-                        <th>PRICE</th>
-                        <th>STOCK</th>
-                        <th>DESCRIPTION</th>
-                        <th>STATUS</th>
-                        <th>ACTION</th>
-                    </tr>
-                </thead>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>IMAGE</th>
+                            <th>NAME</th>
+                            <th>CATEGORY</th>
+                            <th>SUB-CATEGORY</th>
+                            <th>MRP</th>
+                            <th>PRICE</th>
+                            <th>STOCK</th>
+                            <th>DESCRIPTION</th>
+                            <th>STATUS</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
 
-                <tbody>
-                    {{#each product}}
-                    <tr>
-                        <td>{{@index}}</td>
-                        <td><img width="50px" height="60px" src="{{this.image.url}}" alt=""></td>
-                        <td>{{this.name}}</td>
-                        <td>{{this.category}}</td>
-                        <td>{{this.subcategory}}</td>
-                        <td>{{this.mrp}}</td>
-                        <td>{{this.price}}</td>
-                        <td>{{this.stock}}</td>
-                        <td>{{this.description}}</td>
-                        <td>{{this.status}}</td>
-                        <td>
-                            <a href="/admin/editProduct/{{this._id}}" class="btn btn-sm btn-success">Edit</a>
+                    <tbody>
+                        {{#each product}}
+                        <tr>
+                            <td>{{@index}}</td>
+                            <td><img width="50px" height="60px" src="{{this.image.url}}" alt=""></td>
+                            <td>{{this.name}}</td>
+                            <td>{{this.category}}</td>
+                            <td>{{this.subcategory}}</td>
+                            <td>{{this.mrp}}</td>
+                            <td>{{this.price}}</td>
+                            <td>{{this.stock}}</td>
+                            <td>{{this.description}}</td>
+                            <td>{{this.status}}</td>
+                            <td>
+                                <a href="/admin/editProduct/{{this._id}}" class="btn btn-sm btn-success">Edit</a>
 
-                            {{#if this.status}}
+                                {{#if this.status}}
 
-                            <a href="/admin/unlist/{{this._id}}" class="btn btn-sm btn-danger">Unlist</a>
+                                <a href="/admin/unlist/{{this._id}}" class="btn btn-sm btn-danger">Unlist</a>
 
 
-                            {{else}}
-                            <a href="/admin/list/{{this._id}}" class="btn btn-sm btn-success">list</a>
+                                {{else}}
+                                <a href="/admin/list/{{this._id}}" class="btn btn-sm btn-success">list</a>
 
-                            {{/if}}
-                        </td>
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
+                                {{/if}}
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
+</div>
 
 
-
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
-    <script src="assets/js/apexcharts.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/chart.min.js"></script>
-    <script src="assets/js/echarts.min.js"></script>
-    <script src="assets/js/quill.min.js"></script>
-    <script src="assets/js/simple-datatables.js"></script>
-    <script src="assets/js/tinymce.min.js"></script>
-    <script src="assets/js/validate.js"></script>
-    <script src="assets/js/main.js"></script>
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+                class="bi bi-arrow-up-short"></i></a>
+        <script src="assets/js/apexcharts.min.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/chart.min.js"></script>
+        <script src="assets/js/echarts.min.js"></script>
+        <script src="assets/js/quill.min.js"></script>
+        <script src="assets/js/simple-datatables.js"></script>
+        <script src="assets/js/tinymce.min.js"></script>
+        <script src="assets/js/validate.js"></script>
+        <script src="assets/js/main.js"></script>
 
 </body>
 

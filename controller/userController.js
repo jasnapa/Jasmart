@@ -242,6 +242,7 @@ var userController = {
                 categoryModel.find({ block: false }).lean()
 
             ]);
+            
             let Category = req.query.category
             if (req.query.Search) {
                 const products = await productModel.find({ category:Category,
@@ -255,10 +256,10 @@ var userController = {
                         }
                     ]
                 }).lean();
-                res.render('productList', { products, category, sub });
+                res.render('productList', { products, Category,category, sub });
             } else {
 
-                res.render('productList', { category, sub });
+                res.render('productList', {category, sub });
             }
 
         } catch (err) {

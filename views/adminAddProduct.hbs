@@ -316,14 +316,14 @@
 
                                     <div class="form-outline form-white mb-5">
                                         <label for="typeEmailX" class="text-dark">Main Image</label>
-                                        <input type="file" id="typeEmailX" placeholder="image" name="image" accept="image/png, image/jpeg, image/jpg"
+                                        <input type="file"  onchange="Filevalidation()" id="file" placeholder="image" name="image" accept="image/png, image/jpeg, image/jpg"
                                             class="form-control form-control-lg" required/>
                                     </div>
 
                                     <div class="form-outline form-white mb-5">
                                         <label for="typeEmailX" class="text-dark">Sub Image</label>
 
-                                        <input type="file" id="typeEmailX" placeholder="image" name="SubImage" accept="image/png, image/jpeg, image/jpg"
+                                        <input type="file" onchange="Filevalidation()" id="file" placeholder="image" name="SubImage" accept="image/png, image/jpeg, image/jpg"
                                             class="form-control form-control-lg" multiple required/>
                                     </div>
                                     <button class="btn btn-outline-success btn-lg px-5" type="submit">Add</button>
@@ -336,4 +336,53 @@
                 </form>
             </div>
         </section>
+        <script>
+            Filevalidation = () => {
+
+                const fi = document.getElementById('file');
+
+                // Check if any file is selected. 
+
+                if (fi.files.length > 0) {
+
+                    for (const i = 0; i <= fi.files.length - 1; i++) {
+
+
+
+                        const fsize = fi.files.item(i).size;
+
+                        const file = Math.round((fsize / 1024));
+
+                        // The size of the file. 
+
+                        if (file >= 80) {
+
+                            alert(
+
+                                "File too Big, please select a file less than 80kb");
+                                fi.value=null
+
+                        } else if (file < 10) {
+
+                            alert(
+
+                                "File too small, please select a file greater than 10kb");
+                                fi.value=null
+
+
+                        } else {
+
+                            document.getElementById('size').innerHTML = '<b>'
+
+                                + file + '</b> KB';
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        </script>
     </body>

@@ -8,6 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <title>OrderView</title>
+    <link href="/admin/favicon.ico" rel="icon">
+
     <link rel="stylesheet" href="/user/css/productView.css">
     <script src="/user/js/productView.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
@@ -31,9 +33,9 @@
                     <li class="nav-item"><a class="nav-link " href="/products?category=kids">Kids</a></li>
                 </ul>
                 <form class="d-flex text-center">
-                     <a href="/wishlist" class="btn text-light btn-sm  mr-3" type="submit">
-							<i class="bi bi-bag-heart-fill mr-2"></i><span>Wishlist</span>
-						</a>
+                    <a href="/wishlist" class="btn text-light btn-sm  mr-3" type="submit">
+                        <i class="bi bi-bag-heart-fill mr-2"></i><span>Wishlist</span>
+                    </a>
                     <a href="/getCart" class="btn text-light btn-sm me-3" type="submit">
                         <i class="bi-cart-fill me-2"></i><span>Cart</span>
 
@@ -80,20 +82,20 @@
                         <div class="col-md-6">
                             <div class="product p-4">
                                 <div class="d-flex  justify-content-between align-items-center">
-                                   <i
-                                        class="fa fa-shopping-cart text-muted"></i>
+                                    <i class="fa fa-shopping-cart text-muted"></i>
                                 </div>
                                 <div class="mt-4 mb-3">
                                     <h5 class="text-uppercase">Product Name: <span
                                             class="text-success">{{order.product.name}}</span></h5>
-                                    <span class="text-uppercase text-muted brand">{{order.product.category}} > {{order.product.subcategory}}</span> <br>
+                                    <span class="text-uppercase text-muted brand">{{order.product.category}} >
+                                        {{order.product.subcategory}}</span> <br>
                                     <div class="price d-flex flex-row align-items-center"> <span
                                             class="act-price">Price:{{order.product.totalPrice}}</span>
                                         {{!-- <div class="ml-2"> <small class="dis-price">$59</small> <span>40%
                                                 OFF</span>
                                         </div> --}}
                                     </div>
-                                    
+
                                     <span class="text-uppercase text-muted brand">Qty: {{order.quantity}}</span> <br>
                                     <span class="text-uppercase text-muted brand">Payment Method:
                                         {{order.address.paymentMethod}}</span> <br>
@@ -109,7 +111,7 @@
                                 </h6>
                                 <h3 class="about"> {{order.address.address}}
                                 </h3>
-                             <button class="btn btn-success" onclick="generateInvoicePdf()">Download Invoice</button>
+                                <button class="btn btn-success" onclick="generateInvoicePdf()">Download Invoice</button>
                             </div>
                         </div>
                     </div>
@@ -117,46 +119,48 @@
             </div>
         </div>
     </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.1/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.1/xlsx.full.min.js"></script>
     <script>
-    
-  let productName= '{{order.product.name}}'
-  let productQuantity= '{{order.quantity}}'
-  let productPrice= '{{order.product.price}}'
-  let productTotal= '{{order.total}}'
-  let orderId= '{{order.orderId}}'
-  let userName= '{{order.address.name}}'
-  let address= '{{order.address.address}}'
-  let dispatch= '{{order.orderDate}}'
-  let orders = []
- {{#each order}}
- orders.push(['{{this.product.name}}','{{this.product.quantity}}','{{this.product.price}}','{{this.product.totalPrice}}'])
- {{/each}}
- console.log(orders,'hello')
- orders.push( ["", "", "", ""],
-              ["", "", "Total", productTotal],
-              ["", "", "", ""])
- const { jsPDF } = window.jspdf;
-function generateInvoicePdf() {
-     const { jsPDF } = window.jspdf;
-    const doc= new jsPDF();
-    doc.text(15, 20, "JasMart Invoice");
-    doc.setFontSize(12);
-      doc.text(15, 30, "Invoice No : "+orderId);
-      doc.text(15, 40, "Name : "+userName);
-      doc.text(15, 50, "Address : "+address);
-      doc.text(15, 70, "Date : "+dispatch);
-      doc.autoTable({
-        head: [['Product Name', 'Quantity', 'price', "total"]],
-        body: orders,
-        startY: 80
-      })
-    doc.setFontSize(14);
-      doc.text(15, doc.lastAutoTable.finalY + 70,"Thank you for the purchase . Continue shopping with us...");
-      doc.save('invoice.pdf');
-    }
+
+        let productName = '{{order.product.name}}'
+        let productQuantity = '{{order.quantity}}'
+        let productPrice = '{{order.product.price}}'
+        let productTotal = '{{order.total}}'
+        let orderId = '{{order.orderId}}'
+        let userName = '{{order.address.name}}'
+        let address = '{{order.address.address}}'
+        let dispatch = '{{order.orderDate}}'
+        let orders = []
+        { { #each order } }
+        orders.push(['{{this.product.name}}', '{{this.product.quantity}}', '{{this.product.price}}', '{{this.product.totalPrice}}'])
+        {
+            {
+                /each}}
+                console.log(orders, 'hello')
+                orders.push(["", "", "", ""],
+                    ["", "", "Total", productTotal],
+                    ["", "", "", ""])
+                const { jsPDF } = window.jspdf;
+                function generateInvoicePdf() {
+                    const { jsPDF } = window.jspdf;
+                    const doc = new jsPDF();
+                    doc.text(15, 20, "JasMart Invoice");
+                    doc.setFontSize(12);
+                    doc.text(15, 30, "Invoice No : " + orderId);
+                    doc.text(15, 40, "Name : " + userName);
+                    doc.text(15, 50, "Address : " + address);
+                    doc.text(15, 70, "Date : " + dispatch);
+                    doc.autoTable({
+                        head: [['Product Name', 'Quantity', 'price', "total"]],
+                        body: orders,
+                        startY: 80
+                    })
+                    doc.setFontSize(14);
+                    doc.text(15, doc.lastAutoTable.finalY + 70, "Thank you for the purchase . Continue shopping with us...");
+                    doc.save('invoice.pdf');
+                }
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"

@@ -242,15 +242,15 @@ var userController = {
                 categoryModel.find({ block: false }).lean()
 
             ]);
-
-            if (req.body.Search) {
-                const products = await productModel.find({
+            let Category = req.query.category
+            if (req.query.Search) {
+                const products = await productModel.find({ category:Category,
                     $and: [
                         { status: 'true' },
                         {
                             $or: [
-                                { name: new RegExp(req.body.Search, 'i') },
-                                { category: new RegExp(req.body.Search, 'i') }
+                                { name: new RegExp(req.query.Search, 'i') },
+                                { category: new RegExp(req.query.Search, 'i') }
                             ]
                         }
                     ]

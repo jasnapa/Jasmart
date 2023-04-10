@@ -3,6 +3,8 @@
 
 <head>
     <title>JasMart</title>
+    <link href="/admin/favicon.ico" rel="icon">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Footwear Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -30,30 +32,34 @@
 
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <!-- //web-fonts -->
-    {{!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"> --}}
+    {{!--
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"> --}}
     <style>
         * {
             box-sizing: border-box;
             /* outline:1px solid ;*/
         }
+
         body {
-            background: linear-gradient(to bottom, #ffffff 0%, #e1e8ed 100%);
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e1e8ed', GradientType=0);
             height: 100%;
             margin: 0;
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
+
         .wrapper-1 {
             width: 100%;
             height: 100vh;
             display: flex;
             flex-direction: column;
         }
+
         .wrapper-2 {
             padding: 30px;
             text-align: center;
         }
+
         h1 {
             font-family: 'Kaushan Script', cursive;
             font-size: 4em;
@@ -62,6 +68,7 @@
             margin: 0;
             margin-bottom: 20px;
         }
+
         .wrapper-2 p {
             margin: 0;
             font-size: 1.3em;
@@ -69,6 +76,7 @@
             font-family: 'Source Sans Pro', sans-serif;
             letter-spacing: 1px;
         }
+
         .go-home {
             color: #fff;
             background: #5892FF;
@@ -79,12 +87,14 @@
             text-transform: capitalize;
             box-shadow: 0 10px 16px 1px rgba(174, 199, 251, 1);
         }
+
         .footer-like {
             margin-top: auto;
             background: #D7E6FE;
             padding: 6px;
             text-align: center;
         }
+
         .footer-like p {
             margin: 0;
             padding: 4px;
@@ -92,25 +102,29 @@
             font-family: 'Source Sans Pro', sans-serif;
             letter-spacing: 1px;
         }
+
         .footer-like p a {
             text-decoration: none;
             color: #5892FF;
             font-weight: 600;
         }
-        
+
         @media (min-width:360px) {
             h1 {
                 font-size: 4.5em;
             }
+
             .go-home {
                 margin-bottom: 20px;
             }
         }
+
         @media (min-width:600px) {
             .content {
                 max-width: 1000px;
                 margin: 0 auto;
             }
+
             .wrapper-1 {
                 height: initial;
                 max-width: 620px;
@@ -153,9 +167,9 @@
                         </li> --}}
                     </ul>
                     <form class="d-flex justify-content-end mt-3">
-                         <a href="/wishlist" class="btn text-light btn-sm  mr-3" type="submit">
-							<i class="bi bi-bag-heart-fill mr-2"></i><span>Wishlist</span>
-						</a>
+                        <a href="/wishlist" class="btn text-light btn-sm  mr-3" type="submit">
+                            <i class="bi bi-bag-heart-fill mr-2"></i><span>Wishlist</span>
+                        </a>
                         <a href="/getCart" class="btn text-light btn-sm me-3" type="submit">
                             <i class="bi-cart-fill me-2"></i><span>Cart</span>
 
@@ -184,33 +198,35 @@
                 </div>
             </div>
         </nav>
-         <div class='content'>
-        <div class="wrapper-1">
-            <div class="wrapper-2">
-                <div class="card-body text-dark cart">
-                    <div class="col-sm-12 empty-cart-cls text-center text-dark">
-                        <img src="https://i.imgur.com/dCdflKN.png" width="130" height="130" class="img-fluid mb-4 mr-3">
-                        <h3><strong>Your Cart is Empty</strong></h3>
-                        <h4>Add something to make me happy :</h4>
-                        <a href="/products" class="btn btn-warning text-light cart-btn-transform m-3" data-abc="true">continue
-                            shopping</a>
+        <div class='content'>
+            <div class="wrapper-1">
+                <div class="wrapper-2">
+                    <div class="card-body text-dark cart">
+                        <div class="col-sm-12 empty-cart-cls text-center text-dark">
+                            <img src="https://i.imgur.com/dCdflKN.png" width="130" height="130"
+                                class="img-fluid mb-4 mr-3">
+                            <h3><strong>Your Cart is Empty</strong></h3>
+                            <h4>Add something to make me happy :</h4>
+                            <a href="/products" class="btn btn-warning text-light cart-btn-transform m-3"
+                                data-abc="true">continue
+                                shopping</a>
+                        </div>
                     </div>
                 </div>
+                {{!-- <div class="footer-like">
+                    <p>Email not received?
+                        <a href="#">Click here to send again</a>
+                    </p>
+                </div> --}}
             </div>
-            {{!-- <div class="footer-like">
-                <p>Email not received?
-                    <a href="#">Click here to send again</a>
-                </p>
-            </div> --}}
         </div>
-    </div>
 
 
 
-    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Source+Sans+Pro" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Source+Sans+Pro" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
 </body>
 
 </html>

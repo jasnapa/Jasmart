@@ -1,40 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <title>JasMart</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <title>JasMart</title>
+  <link href="/admin/favicon.ico" rel="icon">
+
 </head>
-<body style="font-family: Helvetica, Arial, sans-serif; margin: 0px; padding: 0px; background-color: #f0e6e6;">
+
+<body style="font-family: Helvetica, Arial, sans-serif; margin: 0px; padding: 0px;">
   <table class="mt-5" role="presentation"
     style="width: 100%; border-collapse: collapse; border: 0px; border-spacing: 0px; font-family: Arial, Helvetica, sans-serif; ">
     <tbody>
       <tr>
         <td align="center" style="padding: 1rem 2rem; vertical-align: top; width: 100%;">
-          <table role="presentation" style="max-width: 600px; border-collapse: collapse; border: 0px; border-spacing: 0px; text-align: left;">
+          <table role="presentation"
+            style="max-width: 600px; border-collapse: collapse; border: 0px; border-spacing: 0px; text-align: left;">
             <tbody>
               <tr>
                 <td style="padding: 40px 0px 0px;">
-                 <form action="/register" method="post">
-                  <div style="padding: 20px; background-color: rgb(248, 243, 243);">
-                    <div class="text-center" style="color: rgb(0, 0, 0); text-align: left;">
-                      <h3 style="margin: 1rem 0">OTP verification</h3>
-                      <p style="padding-bottom: 16px">Please enter the one time password.</p>
-                      <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2"></div>
-                        <input class="m-2 text-center form-control rounded" type="text" id="first" name="otp" /> 
-                        </div>
-    
+                  <form action="/register" method="post">
+                    <div style="padding: 20px; background-color: rgb(248, 243, 243);">
+                      <div class="text-center" style="color: rgb(0, 0, 0); text-align: left;">
+                        <h3 style="margin: 1rem 0">OTP verification</h3>
+                        <p style="padding-bottom: 16px">Please enter the one time password.</p>
+                        <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2"></div>
+                        <input class="m-2 text-center form-control rounded" type="text" id="first" name="otp" />
+                      </div>
 
-                        
-                 <div class="mt-4 text-center">
-                 <button type="submit" class="btn btn-danger px-4 validate ">Verify</button></div><br>
-                 <div style="color: rgb(25, 181, 243);" id="countdown"></div>
+
+
+                      <div class="mt-4 text-center">
+                        <button type="submit" class="btn btn-danger px-4 validate ">Verify</button>
+                      </div><br>
+                      <div style="color: rgb(25, 181, 243);" id="countdown"></div>
                     </div>
                     </div>
-                  </div>
-                   
+                    </div>
+
                   </form>
                   {{!-- <div style="padding-top: 20px; color: rgb(153, 153, 153); text-align: center;">
                     <p style="padding-bottom: 16px">Made with ♥ in Paris</p>
@@ -47,21 +54,23 @@
       </tr>
     </tbody>
   </table>
-    <script>
- let countdown=document.getElementById("countdown");
-    let count=61;
-    let countdownInterval = setInterval(() =>{
-    count--;
-    countdown.innerText="OTP Resend in "+count;
-    checkOver()
-    },1000);
-    function checkOver(){
-      if(count==0){
+  <script>
+    let countdown = document.getElementById("countdown");
+    let count = 61;
+    let countdownInterval = setInterval(() => {
+      count--;
+      countdown.innerText = "OTP Resend in " + count;
+      checkOver()
+    }, 1000);
+    function checkOver() {
+      if (count == 0) {
         clearInterval(countdownInterval)
-        countdown.innerHTML='<span onclick="window.location.reload()">Resend OTP</span>'
+        countdown.innerHTML = '<span onclick="window.location.reload()">Resend OTP</span>'
       }
     }
-  </script>  
+  </script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-</html> 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+</html>

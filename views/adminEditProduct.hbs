@@ -238,10 +238,10 @@
 
                     <a title="Banner" href="/admin/banner" class="nav_link"><i class='bx bxs-image nav_icon'></i> <span
                             class="nav_name">Banner</span> </a>
-                            <a title="Coupon" href="/admin/coupon" class="nav_link"> <i class='bx bxs-discount nav_icon'></i>
-                  <span class="nav_name">
-                     Coupon</span> </a>
-                             <a title="Sales Report" href="/admin/salesReport" class="nav_link"> <i
+                    <a title="Coupon" href="/admin/coupon" class="nav_link"> <i class='bx bxs-discount nav_icon'></i>
+                        <span class="nav_name">
+                            Coupon</span> </a>
+                    <a title="Sales Report" href="/admin/salesReport" class="nav_link"> <i
                             class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Sales
                             Report</span> </a>
                 </div>
@@ -316,24 +316,25 @@
                                             value="{{stock}}" class="form-control form-control-lg" required />
                                     </div>
                                     <div>
-                                        <img src="{{this.image.url}}" width="100px"
-                                            height="150px" alt="">
+                                        <img src="{{this.image.url}}" width="100px" height="150px" alt="">
                                     </div>
                                     <div class="form-outline form-white mb-5">
                                         <label for="typeEmailX" class="text-dark">Main Image</label>
-                                        <input type="file" id="typeEmailX" placeholder="image" name="image"
-                                            value="{{image}}" class="form-control form-control-lg" />
+                                        <input type="file" onchange="Filevalidation()" id="file" placeholder="image"
+                                            name="image" value="{{image}}" class="form-control form-control-lg" />
+                                        <p id="size"></p>
+
                                     </div>
                                     {{#each SubImage}}
-                                    <img class="me-2" src="{{this.url}}" width="100px" height="100px"
-                                        alt=""><a
+                                    <img class="me-2" src="{{this.url}}" width="100px" height="100px" alt=""><a
                                         href="/admin/deleteImage/{{../product._id}}/?name={{this.original_filename}}">Delete</a>
                                     {{/each}}
                                     <div class="form-outline form-white mb-5">
                                         <label for="typeEmailX" class="text-dark">Sub Image</label>
 
-                                        <input type="file" id="typeEmailX" placeholder="image" name="SubImage"
-                                            class="form-control form-control-lg" multiple />
+                                        <input type="file" onchange="Filevalidation()" id="file" placeholder="image"
+                                            name="SubImage" class="form-control form-control-lg" multiple />
+                                        <p id="size"></p>
                                     </div>
                                     <button class="btn btn-outline-success btn-lg px-5" type="submit">Edit</button>
 
@@ -345,6 +346,55 @@
                 </form>
             </div>
         </section>
+        <script>
+            Filevalidation = () => {
+
+                const fi = document.getElementById('file');
+
+                // Check if any file is selected. 
+
+                if (fi.files.length > 0) {
+
+                    for (const i = 0; i <= fi.files.length - 1; i++) {
+
+
+
+                        const fsize = fi.files.item(i).size;
+
+                        const file = Math.round((fsize / 1024));
+
+                        // The size of the file. 
+
+                        if (file >= 80) {
+
+                            alert(
+
+                                "File too Big, please select a file less than 80kb");
+                                fi.value=null
+
+                        } else if (file < 10) {
+
+                            alert(
+
+                                "File too small, please select a file greater than 10kb");
+                                fi.value=null
+
+
+                        } else {
+
+                            document.getElementById('size').innerHTML = '<b>'
+
+                                + file + '</b> KB';
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        </script>
         <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     </body>
 

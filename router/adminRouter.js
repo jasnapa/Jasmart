@@ -1,8 +1,10 @@
 const express=require('express')
-const { getAdminLogin, postAdminDash, getAdminUser, getAdminDash, getAdminBlock, getAdminUnblock, getAdminCategory, getAdminAddCategory, postAdminAddCategory, getAdminEdit, postAdminEdit, getAdminDelete, getAdminProduct, getAdminAddProduct, postAdminAddProduct, getAdminEditProduct, postAdminEditProduct, getAdminList, getAdminUnlist, getAdminLogout, getAdminOrder, getAdminBanner, getAdminAddBanner, postAdminAddBanner, postAdminBannerDelete, getAdminCoupon, getAdminAddCoupon, postAdminCoupon, getAdminCouponDelete, getDeleteImage, getAdminSalesReport, getOrderView } = require('../controller/adminController')
+const { getAdminLogin, postAdminDash, getAdminUser, getAdminDash, getAdminBlock, getAdminUnblock, getAdminLogout, getAdminOrder, getAdminBanner, getAdminAddBanner, postAdminAddBanner, postAdminBannerDelete, getAdminCoupon, getAdminAddCoupon, postAdminCoupon, getAdminCouponDelete, getAdminSalesReport, getOrderView } = require('../controller/adminController')
 const router=express.Router()
 const multiUpload = require('../middleware/multer')
 const verifyAdmin = require('../middleware/verifyAdmin')
+const { getAdminProduct, getAdminAddProduct, postAdminAddProduct, getAdminEditProduct, postAdminEditProduct, getAdminList, getAdminUnlist, getDeleteImage } = require('../controller/productController')
+const { getAdminCategory, getAdminAddCategory, postAdminAddCategory, getAdminEdit, postAdminEdit, getAdminDelete } = require('../controller/categoryController')
 
 
 

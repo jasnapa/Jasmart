@@ -321,8 +321,9 @@
             </div>
          </section>
          <script src="assets/js/apexcharts.min.js"></script>
-         <div id='chart'></div>
-         <div id='pie'></div>
+         <div id='chart'></div><br>
+         <h2>Pie Chart - Order Status</h2>
+         <div id='pie' class="mt-5"></div>
          <script>
             var options = {
                series: [{
@@ -373,7 +374,7 @@
             var options = {
           series: [{{Delivered}},{{Pending}},{{Cancelled}}],
           chart: {
-          width: 380,
+          width: 480,
           type: 'pie',
         },
         labels: ['Delivered', 'Pending', 'Cancelled'],
@@ -381,7 +382,7 @@
           breakpoint: 480,
           options: {
             chart: {
-              width: 200
+              width: 500
             },
             legend: {
               position: 'bottom'

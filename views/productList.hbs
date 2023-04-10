@@ -93,10 +93,11 @@
                 </div>
             </div>
         </nav>
-        <form action="/searchProduct" method="post">
+        <form action="/searchProduct" method="get">
             <div class="inputs d-flex justify-content-end mt-4 me-5">
                 <div class="form-outline">
                     <input type="search" id="form1" name="Search" class="form-control" />
+                    <input type="hidden" name="category" value="{{Category}}">
                 </div>
                 <button type="submit" class="btn btn-primary">
                     <i class="fas fa-search"></i>
